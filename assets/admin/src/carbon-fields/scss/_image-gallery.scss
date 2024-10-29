@@ -1,0 +1,146 @@
+// TODO: Clean up this styles
+.carbon-preview .carbon-image-remove,
+.carbon-field .icon-button:before { font: normal normal normal 22px/26px 'dashicons'; speak: none; text-transform: none; text-align: center; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; vertical-align: top; }
+
+.carbon-preview .carbon-image-remove { font-size: 20px; }
+.icon-button, .carbon-ImageGallery .icon-button  { padding-right: 10px; font-size: 13px; line-height: 26px; }
+
+.carbon-Image .c2_open_media { padding-top: 0 !important;  }
+.carbon-Image .c2_open_media:before { margin-left: 5px !important; }
+.carbon-ImageGallery .c2_open_media:before { content: "\f128"; line-height: 18px !important;margin-left: -5px !important; }
+
+.carbon-attachment-preview { width: 150px; position: relative; float: left; margin: 0; color: #464646; list-style: none; text-align: center; }
+
+.carbon-preview .carbon-image-remove { visibility: hidden; display: inline; position: absolute; top: -10px; right: -10px; cursor: pointer; box-sizing: border-box; }
+.carbon-preview:hover .carbon-image-remove { visibility: visible; }
+.carbon-preview .carbon-image-remove:before { content: "\f153"; background: #fff; border-radius: 50%; color: #C00; }
+
+.carbon-ImageGallery .input-with-button { padding-right: 0;padding-top: 5px; }
+.carbon-ImageGallery .input-with-button .carbon-file-field { margin-bottom: 5px; }
+.carbon-ImageGallery .input-with-button .button { position: relative; margin: 0 0 6px; padding-top: 4px; padding-left: 10px; padding-right: 10px; }
+
+.carbon-ImageGallery .carbon-image-gallery { display: flex; flex-wrap: wrap; align-items: flex-start; }
+
+.carbon-ImageGallery .carbon-image,
+.carbon-ImageGallery .carbon-sortable-placeholder { width: 150px; height: 150px; float: left; cursor: move; margin: 0 10px 10px 0; position: relative; box-sizing: border-box; }
+.carbon-ImageGallery .carbon-sortable-placeholder { background: #f7f7f7; border: 3px dashed #dddddd; }
+
+#side-sortables .carbon-ImageGallery .carbon-attachment-preview,
+#side-sortables .carbon-ImageGallery .carbon-image,
+#side-sortables .carbon-ImageGallery .carbon-sortable-placeholder { width: 75px; height: 75px; }
+
+.carbon-ImageGallery .input-with-button .button {position: relative !important;}
+.carbon-ImageGallery .icon-button {font-size: inherit !important; line-height: inherit !important; width: auto !important};
+
+
+// TODO: This file was inspired by Woocommerce. We will extend carbon fields with an image gallery in a later point of time
+@import "mixins";
+
+.add_product_images {
+  padding: 0 12px 12px;
+}
+
+#product_images_container {
+  padding: 0 0 0 9px;
+
+  .product_images {
+    display: block;
+    width: 100%;
+    clear: both;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li.image,
+    li.add,
+    li.wc-metabox-sortable-placeholder {
+      width: 80px;
+      height: 80px;
+      float: left;
+      cursor: move;
+      border: 1px solid #d5d5d5;
+      margin: 9px 9px 0 0;
+      background: #f7f7f7;
+      border-radius: 2px;
+      position: relative;
+      box-sizing: border-box;
+
+      img {
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+        display: block;
+      }
+    }
+
+    li.wc-metabox-sortable-placeholder {
+      border: 3px dashed #dddddd;
+      position: relative;
+
+      &:after {
+        @include icon-dashicons( "\f161" );
+        font-size: 2.618em;
+        line-height: 72px;
+        color: #ddd;
+      }
+    }
+
+    ul.actions {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      padding: 2px;
+      display: none;
+
+      li {
+        float: right;
+        margin: 0 0 0 2px;
+
+        a {
+          width: 1em;
+          height: 1em;
+          margin: 0;
+          display: block;
+          overflow: hidden;
+
+          &.tips {
+            cursor: pointer;
+          }
+        }
+
+        a.delete {
+          @include ir();
+          font-size: 1.4em;
+
+          &:before {
+            @include icon-dashicons( "\f153" );
+            color: #999;
+          }
+
+          &:hover {
+            &:before {
+              color: grey;
+            }
+          }
+        }
+      }
+    }
+
+    li:hover ul.actions {
+      display: block;
+    }
+  }
+}
+
+
+@mixin ir() {
+  display: block;
+  text-indent: -9999px;
+  position: relative;
+  height: 1em;
+  width: 1em;
+}
